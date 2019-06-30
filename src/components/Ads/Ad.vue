@@ -2,7 +2,23 @@
   <v-container>
     <v-layout row>
       <v-flex xs12>
-        <h1>Ad</h1>
+        <v-card>
+          <v-card-media
+          src="https://cdn.vuetifyjs.com/images/carousel/bird.jpg"
+          height="300px"
+          >
+
+          </v-card-media>
+          <v-card-text>
+            <h1 class="text--primary">Lorem</h1>
+            <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов.</p>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn class="warning" flat>Edit</v-btn>
+            <v-btn class="success">Buy</v-btn>
+          </v-card-actions>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>

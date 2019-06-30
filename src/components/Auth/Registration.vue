@@ -84,6 +84,7 @@
     methods: {
       onSubmit () {
         if (this.$refs.form.validate()) {
+          //eslint-disable-next-line
           const user = {
             email: this.email,
             password: this.password
