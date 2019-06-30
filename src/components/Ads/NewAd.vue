@@ -2,30 +2,26 @@
   <v-container>
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
-        <h1 class="text--secondary mb-3">Create new Ad</h1>
+        <h1 class="text--secondary mb-3">Create new ad</h1>
         <v-form v-model="valid" ref="form" validation class="mb-3">
           <v-text-field
                   name="title"
                   label="Ad title"
                   type="text"
-                  reguired
-                  :rules="[v => !!v || 'Title is req']"
                   v-model="title"
-          >
-
-          </v-text-field>
+                  required
+                  :rules="[v => !!v || 'Title is required']"
+          ></v-text-field>
           <v-text-field
                   name="description"
                   label="Ad description"
                   type="text"
-                  multi-line
                   v-model="description"
-                  :rules="[v => !!v || 'Description is req']"
-          >
-
-          </v-text-field>
+                  multi-line
+                  :rules="[v => !!v || 'Description is required']"
+          ></v-text-field>
         </v-form>
-        <v-layout row mb-3>
+        <v-layout row class="mb-3">
           <v-flex xs12>
             <v-btn class="warning">
               Upload
@@ -41,18 +37,19 @@
         <v-layout row>
           <v-flex xs12>
             <v-switch
+                    label="Add to promo?"
                     v-model="promo"
                     color="primary"
-                    label="Add to promo ?"
             ></v-switch>
           </v-flex>
         </v-layout>
         <v-layout row>
           <v-flex xs12>
             <v-spacer></v-spacer>
-            <v-btn class="success"
-                   @click="createAd"
-                   :disabled="!valid"
+            <v-btn
+                    :disabled="!valid"
+                    class="success"
+                    @click="createAd"
             >
               Create ad
             </v-btn>
@@ -76,12 +73,14 @@
     methods: {
       createAd () {
         if (this.$refs.form.validate()) {
+          // logic
           const ad = {
             title: this.title,
             description: this.description,
-            promo: this.promo
+            promo: this.promo,
+            imageSrc: 'https://cdn-images-1.medium.com/max/850/1*nq9cdMxtdhQ0ZGL8OuSCUQ.jpeg'
           }
-          console.log(ad);
+          this.$store.dispatch('createAd', ad)
         }
       }
     }
