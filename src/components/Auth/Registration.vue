@@ -48,7 +48,8 @@
             <v-spacer></v-spacer>
             <v-btn
                     @click="onSubmit"
-                    :disabled="!valid"
+                    :loading="loading"
+                    :disabled="!valid || loading"
                     color="primary">
           Create account
             </v-btn>
@@ -81,6 +82,12 @@
         ]
       }
     },
+    //eslint-disable-next-line
+    computed : {
+      loading (state) {
+        return this.$store.getters.loading
+      }
+    },
     methods: {
       onSubmit () {
         if (this.$refs.form.validate()) {
@@ -89,6 +96,11 @@
             email: this.email,
             password: this.password
           }
+          this.$store.dispatch('registerUser', user)
+                  .then(() => {
+                    this.$router.push('/')
+                  })
+                  .catch(err => console.log(err))
         }
       }
     }
