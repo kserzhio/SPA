@@ -37,7 +37,8 @@
             <v-spacer></v-spacer>
             <v-btn
                     @click="onSubmit"
-                    :disabled="!valid"
+                    :disabled="!valid || loading"
+                    :loading="loading"
                     color="primary">
               Login
             </v-btn>
@@ -65,6 +66,11 @@
         ]
       }
     },
+    computed: {
+      loading () {
+        return this.$store.getters.loading
+      }
+    },
     methods: {
       //eslint-disable-next-line
         onSubmit () {
@@ -74,6 +80,11 @@
               email: this.email,
               password: this.password
             }
+            this.$store.dispatch('loginUser', user)
+                    .then(() => {
+                      this.$router.push('/')
+                    })
+                    .catch(() => {})
           }
         }
     }
