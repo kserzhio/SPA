@@ -87,6 +87,14 @@
                     .catch(() => {})
           }
         }
-    }
+    },
+      // eslint-disable-next-line
+      created () {
+          // eslint-disable-next-line
+        if(this.$route.query['loginError']){
+            // eslint-disable-next-line
+            this.$store.dispatch('setError','Please log in to access this page.')
+        }
+      }
   }
 </script>
