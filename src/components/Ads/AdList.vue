@@ -39,8 +39,7 @@
 <script>
   export default {
     computed: {
-        // eslint-disable-next-line
-      myAds (state) {
+      myAds () {
         return this.$store.getters.myAds
       }
     }
