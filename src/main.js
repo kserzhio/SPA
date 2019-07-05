@@ -24,7 +24,7 @@ new Vue({
       authDomain: "vue-spa-app.firebaseapp.com",
       databaseURL: "https://vue-spa-app.firebaseio.com",
       projectId: "vue-spa-app",
-      storageBucket: "",
+      storageBucket: "vue-spa-app.appspot.com",
       messagingSenderId: "960616649643",
       appId: "1:960616649643:web:4ad06990bb7e982b"
     });

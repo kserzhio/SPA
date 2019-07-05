@@ -1,5 +1,6 @@
 /*eslint-disable */
 import * as fb from 'firebase'
+
 class User {
     constructor (id) {
         this.id = id
@@ -21,7 +22,12 @@ export default {
             commit('setLoading', true)
             try {
                 const user = await fb.auth().createUserWithEmailAndPassword(email, password)
-                commit('setUser', new User(user.uid))
+                fb.auth().onAuthStateChanged(function(user) {
+                    if (user) {
+                        commit('setUser', new User(user.uid))
+                    }
+                });
+                console.log(user.uid)
                 commit('setLoading', false)
             } catch (error) {
                 commit('setLoading', false)
@@ -34,7 +40,11 @@ export default {
             commit('setLoading', true)
             try {
                 const user = await fb.auth().signInWithEmailAndPassword(email, password)
-                commit('setUser', new User(user.uid))
+                fb.auth().onAuthStateChanged(function(user) {
+                    if (user) {
+                        commit('setUser', new User(user.uid))
+                    }
+                });
                 commit('setLoading', false)
             } catch (error) {
                 commit('setLoading', false)
@@ -59,4 +69,3 @@ export default {
         }
     }
 }
-
