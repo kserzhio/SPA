@@ -6,9 +6,10 @@ import store from './store'
 import Vuetify from 'vuetify'
 import * as fb from 'firebase'
 import 'vuetify/dist/vuetify.min.css'
+import ByuModal from "./components/Shared/ByuModal";
 
 Vue.use(Vuetify)
-
+Vue.component('app-buy-modal',ByuModal)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

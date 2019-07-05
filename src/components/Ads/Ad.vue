@@ -13,8 +13,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <EditModal :ad="ad"></EditModal>
-            <v-btn class="success">Buy</v-btn>
+            <EditModal :ad="ad" v-if="isOwner"></EditModal>
+            <app-buy-modal :ad="ad"></app-buy-modal>
           </v-card-actions>
         </v-card>
         <div v-else class="text-xs-center">
@@ -40,6 +40,9 @@
       },
       loading () {
         return this.$store.getters.loading
+      },
+      isOwner () {
+        return this.ad.ownerId === this.$store.getters.user.id
       }
     },
     components: {
