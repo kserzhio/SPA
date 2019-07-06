@@ -6,7 +6,9 @@ import store from './store'
 import Vuetify from 'vuetify'
 import * as fb from 'firebase'
 import 'vuetify/dist/vuetify.min.css'
+import './stylus/main.styl'
 import ByuModal from "./components/Shared/ByuModal";
+
 
 Vue.use(Vuetify)
 Vue.component('app-buy-modal',ByuModal)
